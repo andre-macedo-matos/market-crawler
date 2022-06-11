@@ -1,6 +1,22 @@
+spring:
+  profiles:
+    active:
+    - dev
 app:
   datasource:
     jdbc-url: jdbc:postgresql://localhost:5432/crawler
     username: postgres
     password: password
-    pool-size: 30 
+    maximum-pool-size: 30
+    
+---
+spring:
+  profiles:
+    active:
+    - prod
+app:
+  datasource:
+    jdbc-url: ${JDBC_DATABASE_URL}
+    username: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
+    maximum-pool-size: 30
